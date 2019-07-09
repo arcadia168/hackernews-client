@@ -1,6 +1,7 @@
 import React, { Component } from 'React';
 import axios from 'axios';
 import { Container, Row, Alert, Spinner, Button } from 'react-bootstrap';
+import HackerNewsItem from './HackerNewsItem.jsx';
 
 export default class TopHackerNewsItems extends Component {
     constructor(props) {
@@ -30,48 +31,11 @@ export default class TopHackerNewsItems extends Component {
 
                 console.info(`Successfully retrieved the top news item IDs: ${JSON.stringify(topNewsItemIds)}`);
 
-                // Set this on the state asynchronously.
                 this.setState({
                     topNewsItemIds
                 })
 
-                // Now go and retrieve the first 30 news items to display
-                // Create an array of promises then use promise.all on them
-                const newsItemDetailsCalls = [];
-
-                for (let i = 0; i < 30; i++) {
-                    const currentTopNewsItemId = topNewsItemIds[i];
-                    newsItemDetailsCalls.push(axios.get(`${this.hackersNewsApiBaseUrl}/item/${currentTopNewsItemId}.json`))
-                }
-
-                // Now await all of the responses, allowing them to run concurrently
-                axios.all(newsItemDetailsCalls).then(topNewsItemDetailsResponses => {
-                    debugger;
-                    console.info(`The first 30 news items details are: ${JSON.stringify(topNewsItemDetailsResponses)}`);
-
-                    // Iterate through responses, extracting out the data and assign these all to the state 
-                    const topNewsItemsDetailsData = [];
-                    topNewsItemDetailsResponses.forEach(topNewsItemDetailsResponse => {
-                        topNewsItemsDetailsData.push(topNewsItemDetailsResponse.data)
-                    });
-
-                    debugger;
-                    console.info(`The extracted top news item details are: ${JSON.stringify(topNewsItemsDetailsData)}`);
-                    this.setState({
-                        currentTopNewsItems: topNewsItemsDetailsData,
-                        loading: false,
-                        startItemIndex: 30, // Set the state to load the next 30 items 
-                        latestItemIndex: 60,
-                    });
-                }).catch(error => {
-                    debugger;
-                    console.error(`Something went wrong attempting to fetch the first 30 news item details: ${JSON.stringify(error)}`);
-
-                    // Set the error on the state and display it to the user in an alert
-                    this.setState({
-                        error: error.message
-                    });
-                });
+                this.loadNextTopNewsItems();
             })
             .catch(error => {
                 debugger;
@@ -151,9 +115,7 @@ export default class TopHackerNewsItems extends Component {
                                 this.state.currentTopNewsItems.map((currentTopNewsItem, index) => {
                                     return (
                                         <Row key={index}>
-                                            {
-                                                JSON.stringify(currentTopNewsItem)
-                                            }
+                                            <HackerNewsItem itemDetails={currentTopNewsItem}/>
                                         </Row>
                                     )
                                 }) // TODO: render a component here to layout everything properly...
@@ -162,9 +124,14 @@ export default class TopHackerNewsItems extends Component {
                                     There are no top news items to display!
                                     </Alert>
                 }
-                <Row>
-                    <Button onClick={this.loadNextTopNewsItems}>More top news items</Button>
-                </Row>
+                {
+                    this.state.loading ?
+                        null
+                        : 
+                        <Row>
+                            <Button onClick={this.loadNextTopNewsItems}>More top news items</Button>
+                        </Row>
+                }
             </Container>
         )
     }
