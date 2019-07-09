@@ -22,11 +22,11 @@ export default class TopHackerNewsItems extends Component {
     }
 
     componentDidMount() {
-        debugger;
+        // debugger;
         //make a call for 30 top hacker news items.
         axios.get(`${this.hackersNewsApiBaseUrl}/topstories.json?print=pretty`)
             .then(response => {
-                debugger;
+                // debugger;
                 const topNewsItemIds = response.data;
 
                 console.info(`Successfully retrieved the top news item IDs: ${JSON.stringify(topNewsItemIds)}`);
@@ -38,7 +38,7 @@ export default class TopHackerNewsItems extends Component {
                 this.loadNextTopNewsItems();
             })
             .catch(error => {
-                debugger;
+                // debugger;
                 console.error(`An error occurred attempting to get top news item IDs: ${error.message}`);
 
                 this.setState({
@@ -63,9 +63,9 @@ export default class TopHackerNewsItems extends Component {
             nextNewsItemIdDetailsCalls.push(axios.get(`${this.hackersNewsApiBaseUrl}/item/${currentTopNewsItemId}.json`));
         }
 
-        debugger;
+        // debugger;
         axios.all(nextNewsItemIdDetailsCalls).then(topNewsItemDetailsResponses => {
-            debugger;
+            // debugger;
             console.info(`The next 30 news items details are: ${JSON.stringify(topNewsItemDetailsResponses)}`);
 
             // Iterate through responses, extracting out the data and assign these all to the state 
@@ -74,7 +74,7 @@ export default class TopHackerNewsItems extends Component {
                 topNewsItemsDetailsData.push(topNewsItemDetailsResponse.data)
             });
 
-            debugger;
+            // debugger;
             console.info(`The extracted top news item details are: ${JSON.stringify(topNewsItemsDetailsData)}`);
             this.setState({
                 currentTopNewsItems: topNewsItemsDetailsData,
@@ -83,7 +83,7 @@ export default class TopHackerNewsItems extends Component {
                 latestItemIndex: this.state.latestItemIndex + 30,
             });
         }).catch(error => {
-            debugger;
+            // debugger;
             console.error(`Something went wrong attempting to fetch the first 30 news item details: ${JSON.stringify(error)}`);
 
             // Set the error on the state and display it to the user in an alert

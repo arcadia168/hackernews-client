@@ -23,16 +23,13 @@ export default class HackerNewsItem extends Component {
         // url: "https://tinyletter.com/jamesbowman/letters/i-have-found-an-excellent-programmer-named-steve-wozniac"
 
         // Calculate 'hours ago' from now...
-        // const momentTimePosted = moment.unix(this.props.itemDetails.time).format('HH');
-        // console.info(`The momentTimePosted (in hours): ${momentTimePosted}`);
-        // debugger;
-        // const momentFromNow = momentTimePosted.fromNow();
-        // debugger;
+        const momentTimePosted = moment.unix(this.props.itemDetails.time).format('DD/MM/YYYY HH:mm');
+        console.info(`The momentTimePosted (in hours): ${momentTimePosted}`);
 
         return (
             <Row>
-                <h1>{this.props.itemDetails.title}</h1>
-                <h2>{this.props.itemDetails.score} by {this.props.itemDetails.by} </h2>
+                <h5><a href={this.props.itemDetails.url}>{this.props.itemDetails.title}</a></h5>
+                <p>{this.props.itemDetails.score} by {this.props.itemDetails.by} at {momentTimePosted}</p>
             </Row>
         );
     }
