@@ -15,10 +15,4 @@ body {
   background: white;
   color: black;
   text-align: center;
-
-  @include mq(mobile, tablet) {
-  }
-
-  @include mq(tablet, desktop) {
-  }
 }
