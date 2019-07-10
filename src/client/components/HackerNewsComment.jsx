@@ -29,40 +29,39 @@ export default class HackerNewsComment extends Component {
 
     loadChildCommentDetails() {
          // Make a call to get the next 30 news items using the appropriate item IDs
-         debugger;
 
          // Set the state to be loading and show the spinner
          this.setState({
              loading: true
          })
- 
+
          const childCommentDetailsCalls = [];
          for (let i = 0; i < this.props.commentDetails.kids.length; i++) {
              const currentChildCommentId = this.props.commentDetails.kids[i];
              console.info(`The currentChildCommentId about to have details requested is: ${currentChildCommentId}`);
              childCommentDetailsCalls.push(axios.get(`${this.hackersNewsApiBaseUrl}/item/${currentChildCommentId}.json`));
          }
- 
-         // debugger;
+
+
          axios.all(childCommentDetailsCalls).then(childCommentDetailsResponses => {
-             // debugger;
+
              console.info(`The child comment details are: ${JSON.stringify(childCommentDetailsResponses)}`);
- 
-             // Iterate through responses, extracting out the data and assign these all to the state 
+
+             // Iterate through responses, extracting out the data and assign these all to the state
              const childCommentDetailsData = [];
              childCommentDetailsResponses.forEach(currentChildCommentDetailsResponse => {
                 childCommentDetailsData.push(currentChildCommentDetailsResponse.data)
              });
- 
-             // debugger;
+
+
              this.setState({
                  childCommentDetails: childCommentDetailsData,
                  loading: false
              });
          }).catch(error => {
-             // debugger;
+
              console.error(`Something went wrong attempting to fetch the first 30 news item details: ${JSON.stringify(error)}`);
- 
+
              // Set the error on the state and display it to the user in an alert
              this.setState({
                  error: error.message
@@ -76,8 +75,6 @@ export default class HackerNewsComment extends Component {
         const momentTimePosted = moment.unix(this.props.commentDetails.time).format('DD/MM/YYYY HH:mm');
         console.info(`The momentTimePosted (in hours): ${momentTimePosted}`);
 
-        debugger;
-
         return (
             <Row className="hacker-news-comment__container">
                 <span className="hacker-news-comment__text">{this.props.commentDetails.text}</span>
@@ -88,8 +85,8 @@ export default class HackerNewsComment extends Component {
                             <Alert variant="danger">
                                 {`Something went wrong loading comments: ${this.state.error}`}
                             </Alert>
-                            : 
-                            this.state.loading ? 
+                            :
+                            this.state.loading ?
                                 <Row className="top-hacker-news-items__spinner">
                                     <Spinner animation="border" role="status">
                                         <span className="sr-only">Loading...</span>
@@ -98,7 +95,7 @@ export default class HackerNewsComment extends Component {
                                 :
                                 this.state.childCommentDetails ?
                                     this.state.childCommentDetails.map(currentChildCommentDetails => {
-                                        debugger;
+                                        ;
                                         return (
                                         <HackerNewsComment commentDetails={currentChildCommentDetails} />
                                         )

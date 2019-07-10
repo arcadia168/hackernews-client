@@ -18,7 +18,7 @@ export default class HackerNewsItem extends Component {
 
     loadComments() {
         // Make a call to get the next 30 news items using the appropriate item IDs
-        debugger;
+        ;
 
         // Set the state to be loading and show the spinner
         this.setState({
@@ -32,24 +32,22 @@ export default class HackerNewsItem extends Component {
             commentDetailsCalls.push(axios.get(`${this.hackersNewsApiBaseUrl}/item/${currentCommentId}.json`));
         }
 
-        // debugger;
         axios.all(commentDetailsCalls).then(commentDetailsResponses => {
-            // debugger;
             console.info(`The child comment details are: ${JSON.stringify(commentDetailsResponses)}`);
 
-            // Iterate through responses, extracting out the data and assign these all to the state 
+            // Iterate through responses, extracting out the data and assign these all to the state
             const commentDetailsData = [];
             commentDetailsResponses.forEach(currentCommentDetailsResponse => {
                 commentDetailsData.push(currentCommentDetailsResponse.data)
             });
 
-            debugger;
+            ;
             this.setState({
                 commentDetails: commentDetailsData,
                 loading: false
             });
         }).catch(error => {
-            // debugger;
+
             console.error(`Something went wrong attempting to fetch the first 30 news item details: ${JSON.stringify(error)}`);
 
             // Set the error on the state and display it to the user in an alert
@@ -75,8 +73,8 @@ export default class HackerNewsItem extends Component {
                             <Alert variant="danger">
                                 {`Something went wrong loading comments: ${this.state.error}`}
                             </Alert>
-                            : 
-                            this.state.loading ? 
+                            :
+                            this.state.loading ?
                                 <Row className="hacker-news-item__spinner">
                                     <Spinner animation="border" role="status">
                                         <span className="sr-only">Loading...</span>
@@ -85,7 +83,7 @@ export default class HackerNewsItem extends Component {
                                 :
                                 this.state.commentDetails ?
                                     this.state.commentDetails.map(currentChildCommentDetails => {
-                                        debugger;
+                                        ;
                                         return (
                                             <HackerNewsComment commentDetails={currentChildCommentDetails} />
                                         )
