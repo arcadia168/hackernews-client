@@ -80,7 +80,7 @@ export default class HackerNewsComment extends Component {
 
         return (
             <Row className="hacker-news-comment__container">
-                <p className="hacker-news-comment__test">{this.props.commentDetails.text}</p>
+                <span className="hacker-news-comment__text">{this.props.commentDetails.text}</span>
                 <p className="hacker-news-comment__description">Posted by {this.props.commentDetails.by} at {momentTimePosted}</p>
                 {
                     this.state.error ?
