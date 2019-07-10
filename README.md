@@ -4,7 +4,7 @@ A coding exercise to create a frontend for HackerNews.
 Runs on a simple Express server in the Node.js runtime and uses React.js.
 Uses `react-bootstrap` for simple styling and components.
 
-You can see the app running live on the Google Cloud Platform [here]()
+You can see the app running live on the Google Cloud Platform [here](https://hackernews-react-client-kata.appspot.com/)
 
 Has some simple Jest snapshot tests, testing could be much better.
 
