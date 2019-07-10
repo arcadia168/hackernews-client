@@ -116,7 +116,7 @@ export default class TopHackerNewsItems extends Component {
                                     return (
                                         <HackerNewsItem itemDetails={currentTopNewsItem}/>
                                     )
-                                }) // TODO: render a component here to layout everything properly...
+                                })
                                 :
                                 <Alert variant="danger">
                                     There are no top news items to display!
