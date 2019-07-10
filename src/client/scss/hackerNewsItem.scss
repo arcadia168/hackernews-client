@@ -3,3 +3,18 @@
     flex-direction: column;
     align-items: baseline;
 }
+
+.hacker-news-item__spinner {
+    justify-content: center;
+    width: 100%;
+    margin: 24px;
+}
+
+.hacker-news-item__details {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    margin: 24px;
+    justify-content: space-between;
+    align-items: baseline;
+}

@@ -68,30 +68,32 @@ export default class HackerNewsItem extends Component {
         return (
             <Row className="hacker-news-item__container">
                 <h5 className="hacker-news-item__title"><a href={this.props.itemDetails.url}>{this.props.itemDetails.title}</a></h5>
-                <p className="hacker-news-item__description">{this.props.itemDetails.score} by {this.props.itemDetails.by} at {momentTimePosted}</p>
-                {
-                    this.state.error ?
-                        <Alert variant="danger">
-                            {`Something went wrong loading comments: ${this.state.error}`}
-                        </Alert>
-                        : 
-                        this.state.loading ? 
-                            <Row className="top-hacker-news-items__spinner">
-                                <Spinner animation="border" role="status">
-                                    <span className="sr-only">Loading...</span>
-                                </Spinner>
-                            </Row>
-                            :
-                            this.state.commentDetails ?
-                                this.state.commentDetails.map(currentChildCommentDetails => {
-                                    debugger;
-                                    return (
-                                        <HackerNewsComment commentDetails={currentChildCommentDetails} />
-                                    )
-                                })
+                <div className="hacker-news-item__details">
+                    <p className="hacker-news-item__description">{this.props.itemDetails.score} by {this.props.itemDetails.by} at {momentTimePosted}</p>
+                    {
+                        this.state.error ?
+                            <Alert variant="danger">
+                                {`Something went wrong loading comments: ${this.state.error}`}
+                            </Alert>
+                            : 
+                            this.state.loading ? 
+                                <Row className="hacker-news-item__spinner">
+                                    <Spinner animation="border" role="status">
+                                        <span className="sr-only">Loading...</span>
+                                    </Spinner>
+                                </Row>
                                 :
-                                <Button onClick={this.loadComments}>Show comments</Button>
-                }
+                                this.state.commentDetails ?
+                                    this.state.commentDetails.map(currentChildCommentDetails => {
+                                        debugger;
+                                        return (
+                                            <HackerNewsComment commentDetails={currentChildCommentDetails} />
+                                        )
+                                    })
+                                    :
+                                    <Button size="sm" onClick={this.loadComments}>Show comments</Button>
+                    }
+                </div>
             </Row>
         );
     }
