@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders the app as expected 1`] = `
+<div
+  className="hacker-news-comment__container row"
+>
+  <span
+    className="hacker-news-comment__text"
+  >
+    Aw shucks, guys ... you make me blush with your compliments.&lt;p&gt;Tell you what, Ill make a deal: I'll keep writing if you keep reading. K?
+  </span>
+  <div
+    className="hacker-new-comment__details"
+  >
+    <span
+      className="hacker-news-comment__description"
+    >
+      Posted by 
+      norvig
+       at 
+      24/08/2011 19:38
+    </span>
+    <button
+      className="btn btn-primary btn-sm"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Load child comments...
+    </button>
+  </div>
+</div>
+`;

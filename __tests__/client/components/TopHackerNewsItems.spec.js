@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../../../src/client/components/app';
+import TopHackerNewsItems from '../../../src/client/components/TopHackerNewsItems';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
@@ -9,12 +9,12 @@ describe('App', () => {
             // Default props
             ...customProps,
         }
-        return mount(<App {...props}/>);
+        return mount(<App {...props} />);
     }
 
     it('renders the app as expected', done => {
         const component = renderer.create(
-            <App />,
+            <TopHackerNewsItems />,
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

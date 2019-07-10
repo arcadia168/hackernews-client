@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders the app as expected 1`] = `
+<div
+  className="hacker-news-item__container row"
+>
+  <h5
+    className="hacker-news-item__title"
+  >
+    <a
+      href="http://www.getdropbox.com/u/2/screencast.html"
+    >
+      My YC app: Dropbox - Throw away your USB drive
+    </a>
+  </h5>
+  <div
+    className="hacker-news-item__details"
+  >
+    <span
+      className="hacker-news-item__description"
+    >
+      111
+       by 
+      dhouston
+       at 
+      04/04/2007 20:16
+    </span>
+    <button
+      className="hacker-news-item__comment-btn btn btn-primary btn-sm"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Show comments
+    </button>
+  </div>
+</div>
+`;
