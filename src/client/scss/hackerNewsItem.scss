@@ -7,14 +7,17 @@
 .hacker-news-item__spinner {
     justify-content: center;
     width: 100%;
-    margin: 24px;
+    margin: $spacing-unit * 3;
 }
 
 .hacker-news-item__details {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    margin: 24px;
-    justify-content: space-between;
-    align-items: baseline;
+    text-align: left;
+}
+
+.hacker-news-item__description {
+    margin-right: $spacing-unit * 4;
+}
+
+.hacker-news-item__comment-btn {
+    margin-left: $spacing-unit * 3;
 }

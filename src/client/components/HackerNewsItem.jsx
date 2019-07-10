@@ -69,7 +69,7 @@ export default class HackerNewsItem extends Component {
             <Row className="hacker-news-item__container">
                 <h5 className="hacker-news-item__title"><a href={this.props.itemDetails.url}>{this.props.itemDetails.title}</a></h5>
                 <div className="hacker-news-item__details">
-                    <p className="hacker-news-item__description">{this.props.itemDetails.score} by {this.props.itemDetails.by} at {momentTimePosted}</p>
+                    <span className="hacker-news-item__description">{this.props.itemDetails.score} by {this.props.itemDetails.by} at {momentTimePosted}</span>
                     {
                         this.state.error ?
                             <Alert variant="danger">
@@ -91,7 +91,7 @@ export default class HackerNewsItem extends Component {
                                         )
                                     })
                                     :
-                                    <Button size="sm" onClick={this.loadComments}>Show comments</Button>
+                                    <Button className="hacker-news-item__comment-btn" size="sm" onClick={this.loadComments}>Show comments</Button>
                     }
                 </div>
             </Row>
