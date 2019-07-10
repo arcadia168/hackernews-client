@@ -49,7 +49,6 @@ export default class TopHackerNewsItems extends Component {
 
     loadNextTopNewsItems() {
         // Make a call to get the next 30 news items using the appropriate item IDs
-        debugger;
 
         // Set the state to be loading and show the spinner
         this.setState({
