@@ -18,7 +18,7 @@ export default class HackerNewsComment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            childCommentDetails: [],
+            childCommentDetails: undefined,
             loading: false,
             error: undefined
         }
@@ -103,7 +103,10 @@ export default class HackerNewsComment extends Component {
                                     )
                                 })
                                 :
-                                <Button onClick={this.loadChildCommentDetails}>Load child comments...</Button>
+                                this.props.commentDetails.kids ?
+                                    <Button onClick={this.loadChildCommentDetails}>Load child comments...</Button>
+                                    :
+                                    null
                 }
             </Row>
         );
