@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const http = require('http');
 
 // set our port
 const port = process.env.PORT || 8080;
