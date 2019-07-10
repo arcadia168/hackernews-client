@@ -8,8 +8,9 @@ $mq-breakpoints: (
 $spacing-unit: 8px;
 
 @import "mq";
-@import "./hackerNewsItems.scss";
 @import "./topHackerNewsItems.scss";
+@import "./hackerNewsItem.scss";
+@import "./hackerNewsComment.scss";
 
 body {
   background: white;

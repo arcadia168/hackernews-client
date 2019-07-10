@@ -1,0 +1,14 @@
+.hacker-news-comment__container {
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: $spacing-unit * 4;
+}
+
+.hacker-news-comment__text {
+    font-size: 11pt;
+    text-align: left;
+}
+
+.hacker-news-comment__description {
+    font-size: 8pt;
+}
