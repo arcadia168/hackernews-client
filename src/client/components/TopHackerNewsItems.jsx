@@ -98,14 +98,14 @@ export default class TopHackerNewsItems extends Component {
         //if not loading render the list of items
         //render a 'more' link to replace current items with the next 30 items. 
         return (
-            <Container>
+            <Container className="top-hacker-news-items__container">
                 {
                     this.state.error ?
                         <Alert variant="danger">
                             Something went wrong when attempting to load news items: {this.state.error}
                         </Alert> :
                         this.state.loading ?
-                            <Row>
+                            <Row className="top-hacker-news-items__spinner">
                                 <Spinner animation="border" role="status">
                                     <span className="sr-only">Loading...</span>
                                 </Spinner>
@@ -114,21 +114,19 @@ export default class TopHackerNewsItems extends Component {
                             this.state.currentTopNewsItems ?
                                 this.state.currentTopNewsItems.map((currentTopNewsItem, index) => {
                                     return (
-                                        <Row key={index}>
-                                            <HackerNewsItem itemDetails={currentTopNewsItem}/>
-                                        </Row>
+                                        <HackerNewsItem itemDetails={currentTopNewsItem}/>
                                     )
                                 }) // TODO: render a component here to layout everything properly...
                                 :
                                 <Alert variant="danger">
                                     There are no top news items to display!
-                                    </Alert>
+                                </Alert>
                 }
                 {
                     this.state.loading ?
                         null
-                        : 
-                        <Row>
+                        :
+                        <Row className="top-hacker-news-items__more-btn-container">
                             <Button onClick={this.loadNextTopNewsItems}>More top news items</Button>
                         </Row>
                 }

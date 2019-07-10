@@ -5,7 +5,11 @@ $mq-breakpoints: (
   wide: 1300px
 );
 
+$spacing-unit: 8px;
+
 @import "mq";
+@import "./hackerNewsItems.scss";
+@import "./topHackerNewsItems.scss";
 
 body {
   background: white;
